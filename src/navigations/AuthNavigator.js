@@ -8,7 +8,7 @@ const AuthStack = createStackNavigator();
 
 const AuthNavigator = () => {
     return (
-        <AuthStack.Navigator>
+        <AuthStack.Navigator screenOptions={{headerShown: false}}>
             <AuthStack.Screen name={LOGIN} component={Login} />
             <AuthStack.Screen name={REGISTER} component={Register} />
         </AuthStack.Navigator>
