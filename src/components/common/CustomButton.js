@@ -22,7 +22,6 @@ const CustomButton = ({
         if (danger) {
             return colors.danger;
         }
-
         if (secondary) {
             return colors.secondary;
         }
