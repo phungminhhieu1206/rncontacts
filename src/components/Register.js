@@ -14,7 +14,6 @@ const RegisterComponent = ({
   onChange,
   form,
   loading,
-  error,
   errors,
 }) => {
   const { navigate } = useNavigation();
@@ -38,22 +37,38 @@ const RegisterComponent = ({
             label="Username"
             iconPosition="right"
             placeholder="Enter Username"
+            error={errors.userName}
+            onChangeText={(value) => {
+              onChange({ name: 'userName', value });
+            }}
           />
 
           <Input
             label="First name"
             iconPosition="right"
             placeholder="Enter First name"
+            onChangeText={(value) => {
+              onChange({ name: 'firstName', value });
+            }}
+            error={errors.firstName}
           />
           <Input
             label="Last Name"
             iconPosition="right"
             placeholder="Enter Last name"
+            error={errors.lastName}
+            onChangeText={(value) => {
+              onChange({ name: 'lastName', value });
+            }}
           />
           <Input
             label="Email"
             iconPosition="right"
             placeholder="Enter Email"
+            error={errors.email}
+            onChangeText={(value) => {
+              onChange({ name: 'email', value });
+            }}
           />
 
           <Input
@@ -69,6 +84,10 @@ const RegisterComponent = ({
               </TouchableOpacity>
             }
             iconPosition="right"
+            error={errors.password}
+            onChangeText={(value) => {
+              onChange({ name: 'password', value });
+            }}
           />
 
           <CustomButton
