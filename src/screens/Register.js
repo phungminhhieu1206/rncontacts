@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import RegisterComponent from "../components/Register";
-import envs from '../config/env'
+import axiosInstance from "../helpers/axiosInstance";
 
 const Register = () => {
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
-    const {BACKEND_URL} = envs;
 
-    console.log('BACKEND URL : >>>', BACKEND_URL); // ~ envs.BACKEND_URL
-    console.log('__DEV__ : >>>', __DEV__);
+    React.useEffect(() => {
+        axiosInstance.get('/contacts/').catch((err) => {
+            console.log('err >>>--------------------\n', err.response);
+        });
+    }, []);
 
     const onChange = ({ name, value }) => {
         setForm({ ...form, [name]: value });
