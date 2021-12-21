@@ -10,7 +10,7 @@ import {
 import colors from '../assets/theme/colors';
 import Container from '../components/common/Container';
 import CustomButton from '../components/common/CustomButton';
-import Input from '../components/common/Input';
+import CustomInput from './common/CustomInput';
 import { REGISTER } from '../constants/routeNames';
 
 const LoginComponent = ({
@@ -37,13 +37,13 @@ const LoginComponent = ({
                 <Text style={styles.subTitle}>Please login here</Text>
 
                 <View style={styles.form}>
-                    <Input
+                    <CustomInput
                         label="Username"
                         iconPosition="right"
                         placeholder="Enter Username"
                     />
 
-                    <Input
+                    <CustomInput
                         label="Password"
                         placeholder="Enter Password"
                         secureTextEntry={isSecureEntry}

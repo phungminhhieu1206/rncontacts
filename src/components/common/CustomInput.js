@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import colors from '../../assets/theme/colors'
 
-const Input = ({
+const CustomInput = ({
     onChangeText,
     value,
     style,
@@ -80,5 +80,5 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Input
+export default CustomInput
 

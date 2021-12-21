@@ -10,6 +10,8 @@ const GlobalProvider = ({ children }) => {
     const [authState, authDispatch] = useReducer(auth, authInitialState);
     const [contactState, contactDispatch] = useReducer(contact, contactInitialState);
 
+    // console.log("authState >> ", authState);
+
     return <GlobalContext.Provider value={{
         authState,
         contactState,

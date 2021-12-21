@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import colors from '../assets/theme/colors';
 import Container from './common/Container';
 import CustomButton from './common/CustomButton';
-import Input from './common/Input';
+import CustomInput from './common/CustomInput';
 import { LOGIN } from '../constants/routeNames';
 // import Message from '../common/Message';
 // import styles from './styles';
@@ -34,7 +34,7 @@ const RegisterComponent = ({
         <Text style={styles.subTitle}>Create a free account</Text>
 
         <View style={styles.form}>
-          <Input
+          <CustomInput
             label="Username"
             iconPosition="right"
             placeholder="Enter Username"
@@ -44,7 +44,7 @@ const RegisterComponent = ({
             }}
           />
 
-          <Input
+          <CustomInput
             label="First name"
             iconPosition="right"
             placeholder="Enter First name"
@@ -53,7 +53,7 @@ const RegisterComponent = ({
             }}
             error={errors.firstName || error?.first_name?.[0]}
           />
-          <Input
+          <CustomInput
             label="Last Name"
             iconPosition="right"
             placeholder="Enter Last name"
@@ -62,7 +62,7 @@ const RegisterComponent = ({
               onChange({ name: 'lastName', value });
             }}
           />
-          <Input
+          <CustomInput
             label="Email"
             iconPosition="right"
             placeholder="Enter Email"
@@ -72,7 +72,7 @@ const RegisterComponent = ({
             }}
           />
 
-          <Input
+          <CustomInput
             label="Password"
             placeholder="Enter Password"
             secureTextEntry={isSecureEntry}

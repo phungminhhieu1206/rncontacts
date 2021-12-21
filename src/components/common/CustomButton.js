@@ -2,6 +2,11 @@ import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native'
 import colors from '../../assets/theme/colors';
 
+/**
+ * Xác định button:
+ * Màu button thay đổi theo state button
+ * Hiện icon loading khi state button loading = true
+ */
 const CustomButton = ({
     title,
     secondary,
