@@ -16,7 +16,7 @@ export const clearAuthState = () => (dispatch) => {
 const register = ({
     email,
     password,
-    userName: username,
+    userName: username, // cách map giữa field của client và field trên server
     firstName: first_name,
     lastName: last_name,
 }) => (dispatch) => {
@@ -31,18 +31,18 @@ const register = ({
             first_name,
             last_name,
         })
-        .then((res) => {
+        .then((res) => { // response trả về từ server sau lệnh post của axios
             dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data,
             });
         })
-        .catch((err) => {
+        .catch((err) => { // global state: error trả về từ server sau lệnh post của axios
             dispatch({
                 type: REGISTER_FAIL,
                 payload: err.response
-                    ? err.response.data
-                    : { error: 'Something went wrong, try again' },
+                    ? err.response.data // error của request post gửi từ server về
+                    : { error: 'Something went wrong, try again !' }, // server xảy ra sự cố, thử tắt internet xem kqua
             });
         });
 };

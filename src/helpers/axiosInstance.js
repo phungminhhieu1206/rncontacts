@@ -13,7 +13,8 @@ const axiosInstance = axios.create({ // create http request to server
 
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const token = await AsyncStorage.getItem('token');
+    const token = await AsyncStorage.getItem('token'); // getToken, xem token đã có trong asyncstorage hay chưa
+    // nếu có token trong local rồi, thì gắn token đó vào authorization thuộc phần header của request x đến server
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -35,7 +36,6 @@ axiosInstance.interceptors.request.use(
 //         reject(error);
 //       });
 //     }
-
 //     if (error.response.status === 403) {
 //       navigate(LOGOUT, {tokenExpired: true});
 //     } else {

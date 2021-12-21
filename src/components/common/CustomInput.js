@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import colors from '../../assets/theme/colors'
 
@@ -13,7 +13,7 @@ const CustomInput = ({
     ...props
 }) => {
 
-    const [focused, setFocused] = React.useState(false);
+    const [focused, setFocused] = useState(false);
 
     const getFlexDirection = () => {
         if (icon && iconPosition) {

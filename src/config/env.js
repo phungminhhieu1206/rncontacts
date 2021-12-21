@@ -8,4 +8,5 @@ const prodEnvironmentVariables = {
   BACKEND_URL: PROD_BACKEND_URL,
 };
 
+// console.log("is DEV ? -->", __DEV__);
 export default __DEV__ ? devEnvironmentVariables : prodEnvironmentVariables;

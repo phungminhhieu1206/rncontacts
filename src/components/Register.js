@@ -34,6 +34,7 @@ const RegisterComponent = ({
         <Text style={styles.subTitle}>Create a free account</Text>
 
         <View style={styles.form}>
+          {error?.error && <Text style={{ color: colors.danger }}>{error.error}</Text>}
           <CustomInput
             label="Username"
             iconPosition="right"
@@ -91,7 +92,6 @@ const RegisterComponent = ({
             }}
           />
 
-          {/* {console.log('error system >>>', error)} */}
           <CustomButton
             loading={loading}
             onPress={onSubmit}
