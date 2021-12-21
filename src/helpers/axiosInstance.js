@@ -6,7 +6,7 @@ import envs from '../config/env';
 
 let headers = {};
 
-const axiosInstance = axios.create({
+const axiosInstance = axios.create({ // create http request to server
   baseURL: envs.BACKEND_URL,
   headers,
 });
