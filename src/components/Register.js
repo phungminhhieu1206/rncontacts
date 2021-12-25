@@ -6,6 +6,7 @@ import Container from './common/Container';
 import CustomButton from './common/CustomButton';
 import CustomInput from './common/CustomInput';
 import { LOGIN } from '../constants/routeNames';
+import Message from './common/Message';
 // import Message from '../common/Message';
 // import styles from './styles';
 
@@ -34,7 +35,17 @@ const RegisterComponent = ({
         <Text style={styles.subTitle}>Create a free account</Text>
 
         <View style={styles.form}>
-          {error?.error && <Text style={{ color: colors.danger }}>{error.error}</Text>}
+          {/* {error?.error && <Text style={{ color: colors.danger }}>{error.error}</Text>} */}
+          {error?.error && (
+            <Message
+              retry
+              danger
+              retryFn={() => {
+                console.log('click retry button in register screen');
+              }}
+              message={error.error}
+            />
+          )}
           <CustomInput
             label="Username"
             iconPosition="right"

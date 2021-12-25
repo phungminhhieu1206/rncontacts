@@ -12,6 +12,7 @@ import Container from '../components/common/Container';
 import CustomButton from '../components/common/CustomButton';
 import CustomInput from './common/CustomInput';
 import { REGISTER } from '../constants/routeNames';
+import Message from './common/Message';
 
 const LoginComponent = ({
     error,
@@ -36,6 +37,17 @@ const LoginComponent = ({
                 <Text style={styles.title}>Welcome to RNContacts</Text>
                 <Text style={styles.subTitle}>Please login here</Text>
 
+                <Message 
+                    retry
+                    retryFn={() => {
+                        console.log('you click retry button');
+                    }}
+                    onDismiss={() => {
+                        console.log('you click dismiss button');
+                    }}
+                    message="invalid credential"
+                    primary
+                />
                 <View style={styles.form}>
                     <CustomInput
                         label="Username"

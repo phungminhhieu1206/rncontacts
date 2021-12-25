@@ -40,7 +40,7 @@ const auth = (state, { type, payload }) => { // payload sẽ tương ứng với
                 ...state,
                 loading: false,
                 data: null,
-                // error: null,
+                error: null,
             };
 
         default:

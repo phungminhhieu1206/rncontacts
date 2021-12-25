@@ -40,10 +40,13 @@ const Register = () => {
 
     useFocusEffect(
         useCallback(() => {
-            if (data) {
-                clearAuthState()(authDispatch);
+            return () => {
+                if (data || error) {
+                    clearAuthState()(authDispatch);
+                }
             }
-        }, [data]),
+
+        }, [data, error]),
     );
 
     // console.log('form >>>', form);
