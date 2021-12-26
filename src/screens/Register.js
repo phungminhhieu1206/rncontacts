@@ -51,7 +51,7 @@ const Register = () => {
 
     // console.log('form >>>', form);
     // console.log('authDispatch >>> ', authDispatch);
-    console.log('global error --> ', error);
+    // console.log('global error --> ', error);
 
     /**
      * 1. check validate khi đang change text input

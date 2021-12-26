@@ -7,7 +7,7 @@ import { GlobalContext } from "../context/Provider";
 const AppNavContainer = () => {
 
     const {
-        authState: {isLoggedIn, loading},
+        authState: {isLoggedIn},
     } = useContext(GlobalContext); // in the first set up, isLoggedIn = true
 
     // console.log("isLoggedIn >> ", isLoggedIn);

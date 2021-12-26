@@ -37,22 +37,29 @@ const LoginComponent = ({
                 <Text style={styles.title}>Welcome to RNContacts</Text>
                 <Text style={styles.subTitle}>Please login here</Text>
 
-                <Message 
-                    retry
-                    retryFn={() => {
-                        console.log('you click retry button');
-                    }}
-                    onDismiss={() => {
-                        console.log('you click dismiss button');
-                    }}
-                    message="invalid credential"
-                    primary
-                />
+
                 <View style={styles.form}>
+                    {error && !error.error && <Message
+                        onDismiss={() => {}}
+                        message={error.detail}
+                        danger
+                    />}
+
+                    {error?.error && (
+                        <Message
+                            danger
+                            onDismiss
+                            message={error.error}
+                        />
+                    )}
+
                     <CustomInput
                         label="Username"
                         iconPosition="right"
                         placeholder="Enter Username"
+                        onChangeText={(value) => {
+                            onChange({ name: 'userName', value })
+                        }}
                     />
 
                     <CustomInput
@@ -68,6 +75,9 @@ const LoginComponent = ({
                             </TouchableOpacity>
                         }
                         iconPosition="right"
+                        onChangeText={(value) => {
+                            onChange({ name: 'password', value })
+                        }}
                     />
 
                     <CustomButton

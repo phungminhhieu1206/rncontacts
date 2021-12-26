@@ -23,7 +23,7 @@ const register = ({
     dispatch({
         type: REGISTER_LOADING, // do mình thiết kế thêm cái màn hình loading
     });
-    axiosInstance // đã chứa url base
+    axiosInstance // đã chứa url base, axios ~ http request
         .post('auth/register', {
             email,
             password,
@@ -32,6 +32,7 @@ const register = ({
             last_name,
         })
         .then((res) => { // response trả về từ server sau lệnh post của axios
+            console.log("register success ----> ", res.data);
             dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data,
