@@ -11,6 +11,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import Container from '../components/common/Container'
 import { SETTINGS } from '../constants/routeNames'
 import logout from '../context/actions/auth/logout'
+import Icon from "react-native-vector-icons/Fontisto"
+import MaterialIcon from "react-native-vector-icons/MaterialIcons"
+import colors from "../assets/theme/colors"
 
 const SideMenu = ({ navigation, authDispatch }) => {
     const handleLogout = () => {
@@ -34,14 +37,14 @@ const SideMenu = ({ navigation, authDispatch }) => {
 
     const menuItems = [
         {
-            icon: <Text>T</Text>,
+            icon: <Icon size={20} name='player-settings'></Icon>,
             name: 'Settings',
             onPress: () => {
                 navigation.navigate(SETTINGS);
             }
         },
         {
-            icon: <Text>T</Text>,
+            icon: <MaterialIcon size={21} name="logout"/>,
             name: 'Logout',
             onPress: handleLogout
         },
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
 
     },
     itemContainer: {
-        paddingHorizontal: 40
+        paddingHorizontal: 60
     },
     item: {
         flexDirection: 'row',
@@ -94,7 +97,8 @@ const styles = StyleSheet.create({
     itemText: {
         fontSize: 17,
         paddingVertical: 7,
-        paddingLeft: 20
+        paddingLeft: 20,
+        color: colors.text
     }
 })
 
