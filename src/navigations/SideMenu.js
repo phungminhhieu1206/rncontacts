@@ -11,40 +11,39 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import Container from '../components/common/Container'
 import { SETTINGS } from '../constants/routeNames'
 import logout from '../context/actions/auth/logout'
-import Icon from "react-native-vector-icons/Fontisto"
-import MaterialIcon from "react-native-vector-icons/MaterialIcons"
+import Icon from "../components/common/Icon"
 import colors from "../assets/theme/colors"
 
 const SideMenu = ({ navigation, authDispatch }) => {
     const handleLogout = () => {
         navigation.toggleDrawer(); // hidden drawer layer when alert popup
         Alert.alert('Logout!', 'Are you sure you want to logout?', [
-          {
-            text: 'Cancel',
-            onPress: () => {},
-          },
-    
-          {
-            text: 'OK',
-            onPress: () => {
-                // logout, xóa asynstorage
-              logout()(authDispatch);
-              console.log("LOGOUT SUCCESSFULL !");
+            {
+                text: 'Cancel',
+                onPress: () => { },
             },
-          },
+
+            {
+                text: 'OK',
+                onPress: () => {
+                    // logout, xóa asynstorage
+                    logout()(authDispatch);
+                    console.log("LOGOUT SUCCESSFULL !");
+                },
+            },
         ]);
-      };
+    };
 
     const menuItems = [
         {
-            icon: <Icon size={20} name='player-settings'></Icon>,
+            icon: <Icon type="fontisto" size={20} name='player-settings'></Icon>,
             name: 'Settings',
             onPress: () => {
                 navigation.navigate(SETTINGS);
             }
         },
         {
-            icon: <MaterialIcon size={21} name="logout"/>,
+            icon: <Icon type="material" size={21} name='logout'></Icon>,
             name: 'Logout',
             onPress: handleLogout
         },
