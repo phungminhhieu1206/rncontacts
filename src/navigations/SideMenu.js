@@ -10,6 +10,7 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Container from '../components/common/Container'
 import { SETTINGS } from '../constants/routeNames'
+import logout from '../context/actions/auth/logout'
 
 const SideMenu = ({ navigation, authDispatch }) => {
     const handleLogout = () => {
@@ -23,7 +24,9 @@ const SideMenu = ({ navigation, authDispatch }) => {
           {
             text: 'OK',
             onPress: () => {
-            //   logoutUser()(authDispatch);
+                // logout, xóa asynstorage
+              logout()(authDispatch);
+              console.log("LOGOUT SUCCESSFULL !");
             },
           },
         ]);
