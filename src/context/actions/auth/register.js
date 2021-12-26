@@ -19,7 +19,7 @@ const register = ({
     userName: username, // cách map giữa field của client và field trên server
     firstName: first_name,
     lastName: last_name,
-}) => (dispatch) => {
+}) => (dispatch) => (onSuccess) => {
     dispatch({
         type: REGISTER_LOADING, // do mình thiết kế thêm cái màn hình loading
     });
@@ -37,6 +37,8 @@ const register = ({
                 type: REGISTER_SUCCESS,
                 payload: res.data,
             });
+
+            onSuccess(res.data);
         })
         .catch((err) => { // global state: error trả về từ server sau lệnh post của axios
             dispatch({

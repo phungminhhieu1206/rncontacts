@@ -39,8 +39,16 @@ const LoginComponent = ({
 
 
                 <View style={styles.form}>
+                    {justSignedUp && (
+                        <Message
+                            onDismiss={() => { }}
+                            message='Account created successfully'
+                            success
+                        />
+                    )}
+
                     {error && !error.error && <Message
-                        onDismiss={() => {}}
+                        onDismiss={() => { }}
                         message={error.detail}
                         danger
                     />}
@@ -57,6 +65,7 @@ const LoginComponent = ({
                         label="Username"
                         iconPosition="right"
                         placeholder="Enter Username"
+                        value={form.userName || null}
                         onChangeText={(value) => {
                             onChange({ name: 'userName', value })
                         }}

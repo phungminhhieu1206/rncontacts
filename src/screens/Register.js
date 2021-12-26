@@ -32,11 +32,11 @@ const Register = () => {
     } = useContext(GlobalContext);
 
     // navigate to LOGIN if data of global state has value
-    useEffect(() => {
-        if (data) {
-            navigate(LOGIN);
-        }
-    }, [data])
+    // useEffect(() => {
+    //     if (data) {
+    //         navigate(LOGIN);
+    //     }
+    // }, [data])
 
     useFocusEffect(
         useCallback(() => {
@@ -129,7 +129,9 @@ const Register = () => {
              * cta cần gửi dữ liệu là form
              * và cần 1 action để thay đổi state là: authDispatch
              */
-            register(form)(authDispatch);
+            register(form)(authDispatch)((data) => {
+                navigate(LOGIN, {data});
+            });
         }
     };
 
