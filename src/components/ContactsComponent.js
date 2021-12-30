@@ -36,7 +36,7 @@ const ContactsComponent = ({
     }
 
     const renderItem = ({ item }) => {
-        console.log('item --> ', item);
+        // console.log('item --> ', item);
 
         const {
             contact_picture,

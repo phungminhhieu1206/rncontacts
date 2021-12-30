@@ -19,7 +19,7 @@ const Contacts = () => {
         }
     } = useContext(GlobalContext);
 
-    console.log('contact data --> ', data);
+    // console.log('contact data --> ', data);
     // console.log('loading --> ', loading);
 
     React.useEffect(() => {

@@ -18,14 +18,14 @@ const auth = (state, { type, payload }) => { // payload sẽ tương ứng với
 
         case LOGIN_LOADING:
         case REGISTER_LOADING:
-            console.log("LOGIN/REGISTER -- LOADING global state -->", state);
+            // console.log("LOGIN/REGISTER -- LOADING global state -->", state);
             return {
                 ...state,
                 loading: true,
             };
 
         case LOGIN_SUCCESS:
-            console.log("LOGIN -- SUCCESS global state -->", state);
+            // console.log("LOGIN -- SUCCESS global state -->", state);
             return {
                 ...state,
                 loading: false,
@@ -34,7 +34,7 @@ const auth = (state, { type, payload }) => { // payload sẽ tương ứng với
             };
 
         case REGISTER_SUCCESS:
-            console.log("REGISTER -- SUCCESS global state -->", state);
+            // console.log("REGISTER -- SUCCESS global state -->", state);
             return {
                 ...state,
                 loading: false,
@@ -43,7 +43,7 @@ const auth = (state, { type, payload }) => { // payload sẽ tương ứng với
 
         case LOGIN_FAIL:
         case REGISTER_FAIL:
-            console.log("LOGIN/REGISTER -- FAIL global state -->", state);
+            // console.log("LOGIN/REGISTER -- FAIL global state -->", state);
             return {
                 ...state,
                 loading: false,
@@ -51,7 +51,7 @@ const auth = (state, { type, payload }) => { // payload sẽ tương ứng với
             };
 
         case LOGOUT_USER:
-            console.log("LOGOUT global state -->", state);
+            // console.log("LOGOUT global state -->", state);
             return {
                 ...state,
                 loading: false,
@@ -60,7 +60,7 @@ const auth = (state, { type, payload }) => { // payload sẽ tương ứng với
             };
 
         case CLEAR_AUTH_STATE:
-            console.log("clear auth global state -->", state);
+            // console.log("clear auth global state -->", state);
             return {
                 ...state,
                 loading: false,
