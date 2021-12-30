@@ -31,7 +31,8 @@ const ContactsComponent = ({
             contact_picture,
             first_name,
             last_name,
-            phone_number
+            phone_number,
+            country_code
         } = item;
 
 
@@ -48,31 +49,41 @@ const ContactsComponent = ({
                             }}
                             source={{ uri: contact_picture }}
                         /> :
-                        <View style={{
-                            width: 45,
-                            height: 45,
-                            backgroundColor: colors.grey,
-                            borderRadius: 25
-                        }}>
-
+                        <View
+                            style={{
+                                width: 45,
+                                height: 45,
+                                backgroundColor: colors.grey,
+                                borderRadius: 25,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexDirection: 'row'
+                            }}
+                        >
+                            <Text style={[styles.name, { color: colors.white }]}>{first_name[0]}</Text>
+                            <Text style={[styles.name, { color: colors.white }]}>{last_name[0]}</Text>
                         </View>
                     }
 
-                    <View style={{ flexDirection: 'row' }}>
-                        <Text>{first_name}</Text>
-                        <Text> {last_name}</Text>
-                    </View>
 
-                    <Text>{phone_number}</Text>
+                    <View style={{ paddingLeft: 20 }}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <Text style={styles.name}>{first_name}</Text>
+                            <Text style={styles.name}> {last_name}</Text>
+                        </View>
+                        <Text
+                            style={styles.phoneNumber}
+                        >{`(${country_code}) ${phone_number}`}</Text>
+                    </View>
                 </View>
 
-                <Icon name="right" type="ant" />
+                <Icon name="right" type="ant" size={18} color={colors.grey} />
             </TouchableOpacity>
         )
     }
 
     return (
-        <View>
+        <View style={{ backgroundColor: colors.white, flex: 1 }}>
             <AppModal
                 setModalVisible={setModalVisible}
                 modalVisible={modalVisible}
@@ -90,13 +101,19 @@ const ContactsComponent = ({
             }
 
             {!loading &&
-                <View style={{paddingVertical: 20}}>
+                <View style={{ paddingVertical: 20 }}>
                     <FlatList
                         data={data}
                         ListEmptyComponent={ListEmptyComponent}
-                        ListFooterComponent={<View style={{height: 100}}></View>}
+                        ListFooterComponent={<View style={{ height: 100 }}></View>}
                         renderItem={renderItem}
                         keyExtractor={(item) => String(item.id)}
+                        ItemSeparatorComponent={() => (
+                            <View style={{
+                                height: 0.5,
+                                backgroundColor: colors.grey
+                            }}></View>
+                        )}
                     />
                 </View>
             }
@@ -113,15 +130,25 @@ const ContactsComponent = ({
 }
 
 const styles = StyleSheet.create({
-    item: {
-        flexDirection: 'row',
-        paddingVertical: 10,
-        paddingHorizontal: 20
-    },
     itemContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingRight: 20
+        paddingRight: 20,
+        alignItems: 'center'
+    },
+    item: {
+        flexDirection: 'row',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        alignItems: 'center'
+    },
+    name: {
+        fontSize: 17
+    },
+    phoneNumber: {
+        opacity: 0.7,
+        fontSize: 14,
+        paddingVertical: 5,
     }
 })
 
