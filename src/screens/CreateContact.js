@@ -1,11 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
+import CreateContactComponent from "../components/CreateContactComponent";
 
 const CreateContact = () => {
     return (
-        <View>
-            <Text>Create contact screen</Text>
-        </View>
+        <CreateContactComponent />
     )
 }
 
