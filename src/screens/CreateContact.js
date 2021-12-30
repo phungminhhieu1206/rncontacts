@@ -34,6 +34,10 @@ const CreateContact = () => {
         });
     };
 
+    const toggleValueChange = () => {
+        setForm({...form, 'isFavorite': !form.isFavorite});
+      };
+
     const onSubmit = () => {
 
         /**
@@ -41,6 +45,8 @@ const CreateContact = () => {
          * contactDispatch: kiểu dispatch tương ứng
          * onSuccess: hàm callback giúp navigate sau khi success
          */
+
+        // console.log('form ----', form);
         createContact(form)(contactDispatch)(() => {
             navigate(CONTACT_LIST);
         });
@@ -57,6 +63,7 @@ const CreateContact = () => {
             setForm={setForm}
             loading={loading}
             error={error}
+            toggleValueChange={toggleValueChange}
         />
     )
 }

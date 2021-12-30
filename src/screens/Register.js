@@ -45,7 +45,6 @@ const Register = () => {
                     clearAuthState()(authDispatch);
                 }
             }
-
         }, [data, error]),
     );
 

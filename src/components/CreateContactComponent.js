@@ -3,7 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
-    Image
+    Image,
+    Switch
 } from 'react-native'
 import colors from '../assets/theme/colors'
 import Container from './common/Container'
@@ -18,7 +19,8 @@ const CreateContactComponent = ({
     onSubmit,
     setForm,
     loading,
-    error
+    error,
+    toggleValueChange
 }) => {
 
     // console.log('error aaaaaaa: ---->', error);
@@ -83,6 +85,24 @@ const CreateContactComponent = ({
                     }}
                     error={error?.phone_number?.[0]}
                 />
+
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        paddingVertical: 10,
+                    }}>
+                    <Text style={{ fontSize: 17 }}>Add to favorites</Text>
+
+                    <Switch
+                        trackColor={{ false: colors.grey, true: colors.primary }}
+                        thumbColor="#FFFFFF"
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={toggleValueChange}
+                        value={form.isFavorite}
+                    />
+                </View>
 
                 <CustomButton
                     primary
