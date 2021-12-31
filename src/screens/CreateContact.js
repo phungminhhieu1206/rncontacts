@@ -16,6 +16,7 @@ const CreateContact = () => {
      * Khai báo các local state đó tại component cha.
      */
 
+    // use to load global state and dispatch when you create contact
     const {
         contactDispatch,
         contactState: {
@@ -23,11 +24,17 @@ const CreateContact = () => {
         },
     } = useContext(GlobalContext);
 
+    // use to image picker
     const sheetRef = useRef(null);
 
+    // use to navigate if create success
     const { navigate } = useNavigation();
 
+    // use to get value from form create contact
     const [form, setForm] = useState({});
+
+    // save image local
+    const [localFile, setLocalFile] = useState(null);
 
     const onChangeText = ({ name, value }) => {
         setForm({
@@ -41,6 +48,7 @@ const CreateContact = () => {
             sheetRef.current.close();
         }
     };
+
     const openSheet = () => {
         if (sheetRef.current) {
             sheetRef.current.open();
@@ -49,6 +57,12 @@ const CreateContact = () => {
 
     const toggleValueChange = () => {
         setForm({ ...form, 'isFavorite': !form.isFavorite });
+    };
+
+    const onFileSelected = (image) => {
+        closeSheet();
+        setLocalFile(image);
+        console.log('images -->', image);
     };
 
     const onSubmit = () => {
@@ -80,6 +94,8 @@ const CreateContact = () => {
             sheetRef={sheetRef}
             openSheet={openSheet}
             closeSheet={closeSheet}
+            onFileSelected={onFileSelected}
+            localFile={localFile}
         />
     )
 }

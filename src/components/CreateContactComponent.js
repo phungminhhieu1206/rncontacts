@@ -25,17 +25,20 @@ const CreateContactComponent = ({
     toggleValueChange,
     sheetRef,
     openSheet,
-    closeSheet
+    closeSheet,
+    onFileSelected,
+    localFile
 }) => {
 
     // console.log('error aaaaaaa: ---->', error);
+    console.log('local file image ---> ', localFile);
 
     return (
         <View style={styles.container}>
             <Container>
 
                 <Image
-                    source={{ uri: DEFAULT_IMAGE_URI }}
+                    source={{ uri: localFile?.path || DEFAULT_IMAGE_URI }}
                     style={styles.imageView}
                 />
 
@@ -122,7 +125,7 @@ const CreateContactComponent = ({
                 />
             </Container>
 
-            <ImagePicker ref={sheetRef} />
+            <ImagePicker onFileSelected={onFileSelected} ref={sheetRef} />
         </View>
     )
 }

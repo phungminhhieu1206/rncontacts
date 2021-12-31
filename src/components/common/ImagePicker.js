@@ -16,12 +16,39 @@ const ImagePicker = React.forwardRef(({ onFileSelected }, ref) => {
             name: 'Take from camera',
             icon: <Icon color={colors.grey} size={21} name="camera" />,
             onPress: () => {
+                // Đây mới là lúc dùng image picker cropper
+                ImagePickerCropper.openCamera({
+                    width: 300,
+                    height: 300,
+                    mediaType: 'photo', // video, any, photo
+                    cropping: true,
+                    freeStyleCropEnabled: true,
+                })
+                    .then((images) => { // image được chọn trong library
+                        onFileSelected(images);
+                    })
+                    .catch((error) => {
+                        console.log('error image picker camera --->', error);
+                    });
             },
         },
         {
             name: 'Choose from Gallery',
             icon: <Icon name="image" color={colors.grey} size={21} />,
             onPress: () => {
+                // Đây mới là lúc dùng image picker cropper
+                ImagePickerCropper.openPicker({
+                    width: 300,
+                    height: 300,
+                    cropping: true,
+                    freeStyleCropEnabled: true,
+                })
+                    .then((images) => {
+                        onFileSelected(images);
+                    })
+                    .catch((error) => {
+                        console.log("error image picker cropper ---> ", error);
+                    });
             },
         },
     ];
@@ -69,4 +96,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default ImagePicker
+export default ImagePicker;
