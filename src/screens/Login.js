@@ -7,6 +7,11 @@ import { GlobalContext } from "../context/Provider";
 
 const Login = () => {
 
+    /**
+     * giao diện --> form (text) --> có dữ liệu, làm thế nào để quản lý dữ liệu đó
+     */
+
+    // local state
     const [form, setForm] = useState({});
     const [justSignedUp, setJustSignedUp] = useState(false);
     const { params } = useRoute();
@@ -31,7 +36,10 @@ const Login = () => {
 
     const onChange = ({ name, value }) => {
         setJustSignedUp(false);
-        setForm({ ...form, [name]: value });
+        setForm({
+            ...form,
+            [name]: value
+        });
     };
 
     const onSubmit = () => {

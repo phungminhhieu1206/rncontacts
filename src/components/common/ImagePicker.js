@@ -55,7 +55,7 @@ const ImagePicker = React.forwardRef(({ onFileSelected }, ref) => {
 
     return (
         <RBSheet
-            ref={ref}
+            ref={ref} // Quan Trọng
             height={190}
             openDuration={250}
             dragFromTopOnly
@@ -71,7 +71,8 @@ const ImagePicker = React.forwardRef(({ onFileSelected }, ref) => {
                     <TouchableOpacity
                         onPress={onPress}
                         style={styles.pickerOption}
-                        key={name}>
+                        key={name}
+                    >
                         {icon}
                         <Text style={styles.text}>{name}</Text>
                     </TouchableOpacity>
