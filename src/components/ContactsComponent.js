@@ -23,7 +23,7 @@ const ContactsComponent = ({
     loading
 }) => {
 
-    const {navigate} = useNavigation();
+    const { navigate } = useNavigation();
 
     const ListEmptyComponent = () => {
         return (
@@ -131,11 +131,11 @@ const ContactsComponent = ({
                 }
             </View>
 
-            <TouchableOpacity 
-            style={styles.floatingActionButton}
-            onPress={() => {
-                navigate(CREATE_CONTACT)
-            }}
+            <TouchableOpacity
+                style={styles.floatingActionButton}
+                onPress={() => {
+                    navigate(CREATE_CONTACT)
+                }}
             >
                 <Icon name="plus" color={colors.white} size={21} />
             </TouchableOpacity>
