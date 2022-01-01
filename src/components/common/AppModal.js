@@ -9,37 +9,50 @@ import {
 } from 'react-native'
 import colors from '../../assets/theme/colors'
 import Icon from './Icon'
+import PropTypes from 'prop-types'
 
 const AppModal = ({
     modalVisible, // ẩn hiện modal được component cha nó quản lý
     setModalVisible,
     title,
     modalBody,
-    modalFooter
+    modalFooter,
+    closeOnTouchOutside
 }) => {
     return (
         <Modal
             visible={modalVisible}
             transparent
         >
-            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.wrapper}>
+            <TouchableOpacity
+                onPress={() => {
+                    if (closeOnTouchOutside) {
+                        setModalVisible(false);
+                    }
+                }}
+                style={styles.wrapper}
+            >
                 <View style={styles.modalView}>
                     <ScrollView>
                         <View style={styles.header}>
-                            <Icon size={27} type='evil' name="close" />
+                            <TouchableOpacity onPress={() => {
+                                setModalVisible(false);
+                            }}>
+                                <Icon size={27} type='evil' name="close" />
+                            </TouchableOpacity>
                             <Text style={styles.title}>{title || 'RNContacts'}</Text>
                             <View />
                         </View>
                         <View style={styles.separator} />
- 
+
                         <View style={styles.body}>
                             {modalBody}
                         </View>
-    
+
                         {modalFooter}
 
                         {!modalFooter && (
-                            <View> 
+                            <View>
                                 <View style={styles.separator} />
                                 <View style={styles.footerItems}>
                                     <View style={styles.footer}>
@@ -108,6 +121,14 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 20
     }
-})
+});
 
-export default AppModal
+AppModal.propTypes = {
+    closeOnTouchOutside: PropTypes.bool,
+};
+
+AppModal.defaultProps = {
+    closeOnTouchOutside: true,
+};
+
+export default AppModal;

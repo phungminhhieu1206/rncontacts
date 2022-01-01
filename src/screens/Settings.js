@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import SettingComponent from '../components/SettingComponent'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Settings = () => {
+
+    // using get email user from AsyncStorage
+    const [email, setEmail] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [sortBy, setSortBy] = React.useState(null);
+
+    const saveSetting = (key, value) => {
+        AsyncStorage.setItem(key, value);
+    };
 
     // first: you need create settingOptions and mount it to SettingComponent
     const settingOptions = [
@@ -18,7 +28,7 @@ const Settings = () => {
         },
         {
             title: 'Default account for new contacts',
-            subTitle: 'phunghieu1206@gmail.com',
+            subTitle: email,
             onPress: () => { },
         },
         {
@@ -28,9 +38,9 @@ const Settings = () => {
         },
         {
             title: 'Sort by',
-            subTitle: 'First Name',
+            subTitle: sortBy,
             onPress: () => {
-                // setModalVisible(true);
+                setModalVisible(true);
             },
         },
         {
@@ -60,6 +70,44 @@ const Settings = () => {
         },
     ];
 
+    const prefArr = [
+        {
+            name: 'First Name',
+            selected: sortBy === 'First Name',
+
+            onPress: () => {
+                saveSetting('sortBy', 'First Name');
+                setSortBy('First Name');
+                setModalVisible(false);
+            },
+        },
+        {
+            name: 'Last Name',
+            selected: sortBy === 'Last Name',
+            onPress: () => {
+                saveSetting('sortBy', 'Last Name');
+                setSortBy('Last Name');
+                setModalVisible(false);
+            },
+        },
+    ];
+
+    const getSettings = async () => {
+        // get email user from asyncStorage
+        const user = await AsyncStorage.getItem('user');
+        setEmail(JSON.parse(user).email);
+
+        const sortPref = await AsyncStorage.getItem('sortBy');
+        if (sortPref) {
+            setSortBy(sortPref);
+        }
+
+    };
+
+    useEffect(() => {
+        getSettings();
+    }, []);
+
     return (
         /**
          * first: mount settingOptions here
@@ -68,6 +116,9 @@ const Settings = () => {
          */
         <SettingComponent
             settingOptions={settingOptions}
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+            prefArr={prefArr}
         />
     )
 }
