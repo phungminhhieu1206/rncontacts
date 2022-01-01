@@ -20,7 +20,8 @@ const ContactsComponent = ({
     modalVisible,
     setModalVisible,
     data,
-    loading
+    loading,
+    sortBy
 }) => {
 
     const { navigate } = useNavigation();
@@ -96,16 +97,6 @@ const ContactsComponent = ({
     return (
         <>
             <View style={{ backgroundColor: colors.white, flex: 1 }}>
-                <AppModal
-                    setModalVisible={setModalVisible}
-                    modalVisible={modalVisible}
-                    modalBody={<View>
-                        <Text>Say hello everyone</Text>
-                    </View>}
-                    modalFooter={<></>}
-                    title="My Profile"
-                />
-
                 {loading &&
                     <View style={{ padding: 100 }}>
                         <ActivityIndicator color={colors.primary} size="large" />
@@ -115,7 +106,26 @@ const ContactsComponent = ({
                 {!loading &&
                     <View style={{ paddingVertical: 20 }}>
                         <FlatList
-                            data={data}
+                            data={
+                                sortBy
+                                    ? data.sort((a, b) => {
+                                        if (sortBy === 'First Name') {
+                                            if (b.first_name > a.first_name) {
+                                                return -1;
+                                            } else {
+                                                return 1;
+                                            }
+                                        }
+                                        if (sortBy === 'Last Name') {
+                                            if (b.last_name > a.last_name) {
+                                                return -1;
+                                            } else {
+                                                return 1;
+                                            }
+                                        }
+                                    })
+                                    : data
+                            }
                             ListEmptyComponent={ListEmptyComponent}
                             ListFooterComponent={<View style={{ height: 100 }}></View>}
                             renderItem={renderItem}
