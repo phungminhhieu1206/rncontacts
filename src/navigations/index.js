@@ -6,6 +6,7 @@ import { GlobalContext } from "../context/Provider";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SplashScreen from 'react-native-splash-screen'
 import { ActivityIndicator } from 'react-native'
+import { navigationRef } from './RootNavigator'
 
 
 const AppNavContainer = () => {
@@ -20,7 +21,7 @@ const AppNavContainer = () => {
     const getUser = async () => {
         try {
             const user = await AsyncStorage.getItem('user');
-            console.log('user islogin true ----> ', user);
+            // console.log('user islogin true ----> ', user);
             if (user) {
                 setAuthLoaded(true);
                 setIsAuthenticated(true);
@@ -38,7 +39,7 @@ const AppNavContainer = () => {
     return (
         <>
             {authLoaded ? (
-                <NavigationContainer>
+                <NavigationContainer ref={navigationRef}>
                     {isAuthenticated ? <DrawerNavigator /> : <AuthNavigator />}
                 </NavigationContainer>
             ) : (

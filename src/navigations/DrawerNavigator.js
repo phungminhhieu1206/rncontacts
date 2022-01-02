@@ -12,6 +12,10 @@ const getDrawerContent = (navigation, authDispatch) => {
 }
 
 const DrawerNavigator = () => {
+    /**
+     * root của logout là từ drawer
+     * -> nên khai báo authDispatch từ drawer và truyền dần vào trong đến hàm gọi action logout()
+     */
     const {authDispatch} = React.useContext(GlobalContext)
     return (
         <Drawer.Navigator

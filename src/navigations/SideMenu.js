@@ -17,12 +17,16 @@ import colors from "../assets/theme/colors"
 const SideMenu = ({ navigation, authDispatch }) => {
     const handleLogout = () => {
         navigation.toggleDrawer(); // hidden drawer layer when alert popup
+        /**
+         * Bất kỳ khi nào cần alert ra 1 thông báo
+         * style content và button chọn của thông báo đó
+         * -> Thực hiện lệnh gọi Alert từ đó !!!
+         */
         Alert.alert('Logout!', 'Are you sure you want to logout?', [
             {
                 text: 'Cancel',
                 onPress: () => { },
             },
-
             {
                 text: 'OK',
                 onPress: () => {
@@ -33,6 +37,7 @@ const SideMenu = ({ navigation, authDispatch }) => {
             },
         ]);
     };
+
 
     const menuItems = [
         {

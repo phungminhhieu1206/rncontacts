@@ -8,6 +8,7 @@ import Icon from "../components/common/Icon"
 import ContactsComponent from "../components/ContactsComponent";
 import { GlobalContext } from "../context/Provider";
 import getContacts from "../context/actions/contacts/getContacts";
+import { CREATE_CONTACT } from '../constants/routeNames';
 
 const Contacts = () => {
     const { setOptions, toggleDrawer } = useNavigation();
