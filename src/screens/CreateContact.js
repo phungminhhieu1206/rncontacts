@@ -8,6 +8,7 @@ import createContact from "../context/actions/contacts/createContact";
 import { GlobalContext } from "../context/Provider";
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { CONTACT_DETAIL, CONTACT_LIST } from '../constants/routeNames';
+import uploadImage from "../helpers/uploadImage";
 
 const CreateContact = () => {
     /**
@@ -35,6 +36,7 @@ const CreateContact = () => {
 
     // save image local
     const [localFile, setLocalFile] = useState(null);
+    const [uploading, setIsUploading] = useState(false);
 
     const onChangeText = ({ name, value }) => {
         setForm({
@@ -62,7 +64,7 @@ const CreateContact = () => {
     const onFileSelected = (image) => {
         closeSheet();
         setLocalFile(image);
-        console.log('images -->', image);
+        // console.log('images -->', image);
     };
 
     const onSubmit = () => {
@@ -74,9 +76,25 @@ const CreateContact = () => {
          */
 
         // console.log('form ----', form);
-        createContact(form)(contactDispatch)(() => {
-            navigate(CONTACT_LIST);
-        });
+
+        if (localFile?.size) {
+            // console.log('localFile choose -->', localFile);
+            setIsUploading(true);
+            uploadImage(localFile)((url) => {
+                setIsUploading(false);
+
+                console.log('after upload image url --->', url);
+
+                createContact({ ...form, contactPicture: url })(contactDispatch)(() => {
+                    navigate(CONTACT_LIST);
+                });
+            })((err) => {
+                console.log('after upload image err --->', err);
+                setIsUploading(false);
+            });
+
+        }
+
         // console.log('error 1 ----> ', error);
     }
 
@@ -88,7 +106,7 @@ const CreateContact = () => {
             onChangeText={onChangeText}
             onSubmit={onSubmit}
             setForm={setForm}
-            loading={loading}
+            loading={loading || uploading}
             error={error}
             toggleValueChange={toggleValueChange}
             sheetRef={sheetRef}

@@ -31,7 +31,7 @@ const CreateContactComponent = ({
 }) => {
 
     // console.log('error aaaaaaa: ---->', error);
-    console.log('local file image ---> ', localFile);
+    // console.log('local file image ---> ', localFile);
 
     return (
         <View style={styles.container}>
@@ -76,8 +76,8 @@ const CreateContactComponent = ({
                             onSelect={(value) => {
                                 const phoneCode = value.callingCode[0];
                                 const cCode = value.cca2;
-                                console.log('value country ---> ', value);
-                                console.log('aaaaaa ---', phoneCode, cCode);
+                                // console.log('value country ---> ', value);
+                                // console.log('aaaaaa ---', phoneCode, cCode);
 
 
                                 setForm({
