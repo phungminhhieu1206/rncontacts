@@ -1,4 +1,4 @@
-package com.rncontacts;
+package com.phunghieu.rncontacts;
 
 import com.facebook.react.ReactActivity;
 
