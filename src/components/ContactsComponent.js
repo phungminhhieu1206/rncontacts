@@ -10,7 +10,7 @@ import {
     StyleSheet
 } from 'react-native'
 import colors from '../assets/theme/colors'
-import { CREATE_CONTACT } from '../constants/routeNames'
+import { CONTACT_DETAIL, CREATE_CONTACT } from '../constants/routeNames'
 import AppModal from './common/AppModal'
 import CustomButton from './common/CustomButton'
 import Icon from './common/Icon'
@@ -50,7 +50,14 @@ const ContactsComponent = ({
 
 
         return (
-            <TouchableOpacity style={styles.itemContainer}>
+            <TouchableOpacity style={styles.itemContainer} onPress={() => {
+                /**
+                 * Muốn click item chuyển đến màn detail
+                 * trường hợp này, navigate kèm data
+                 * Tại màn detail lấy ra params truyền đến !
+                 */
+                navigate(CONTACT_DETAIL, {item});
+            }}>
                 <View style={styles.item}>
                     {contact_picture ?
                         <Image
