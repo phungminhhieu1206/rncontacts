@@ -11,6 +11,11 @@ import getContacts from "../context/actions/contacts/getContacts";
 import { CREATE_CONTACT } from '../constants/routeNames';
 
 const Contacts = () => {
+    /**
+     * Tại màn hình nào muốn setOption cho header, thì:
+     * set thuộc tính setOptions = useNavigation(),
+     * bên dưới set useEffect()
+     */
     const { setOptions, toggleDrawer } = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
     const [sortBy, setSortBy] = useState(null);
@@ -43,6 +48,9 @@ const Contacts = () => {
         }, []),
     );
 
+    /**
+     * Set useEffect cho option header
+     */
     React.useEffect(() => {
         setOptions({
             headerLeft: () => (
