@@ -16,10 +16,25 @@ const ContactDetail = () => {
     useEffect(() => {
         if (item) {
             setOptions({
-                title: item.first_name + ' ' + item.last_name,
+                // title: item.first_name + ' ' + item.last_name,
+                headerStyle: {
+                    backgroundColor: 'yellow'
+                },
+                headerTintColor:'red', // back button và title (nếu có)
+                headerTitle: () => {
+                    return (
+                        <View>
+                            <Text>{item.first_name + ' ' + item.last_name}</Text>
+                        </View>
+                    )
+                },
                 headerRight: () => {
                     return (
-                        <View style={{ flexDirection: 'row', paddingRight: 10 }}>
+                        <View style={{
+                            flexDirection: 'row',
+                            paddingRight: 10,
+                        }}
+                        >
                             <TouchableOpacity>
                                 <Icon
                                     size={21}

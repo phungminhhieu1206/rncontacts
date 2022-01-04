@@ -8,14 +8,22 @@ import { GlobalContext } from "../context/Provider";
 const Login = () => {
 
     /**
-     * giao diện --> form (text) --> có dữ liệu, làm thế nào để quản lý dữ liệu đó
+     * giao diện --> form (text) --> có dữ liệu
+     * làm thế nào để quản lý dữ liệu đó
      */
 
     // local state
     const [form, setForm] = useState({});
     const [justSignedUp, setJustSignedUp] = useState(false);
+    
     const { params } = useRoute();
-
+    /**
+     * Khi user đăng kí thành công:
+     * + Từ màn hình register: navigate(LOGIN, {params});
+     * + Tại màn hình login: tiến hành nhận params từ Route navigate truyền đến
+     * + Thực hiện useEffect(() => {}, [params]) bất cứ khi nào có sự thay đổi params
+     * + ... đổi dữ liệu nhận được vào form, báo user x vừa đăng kí, mời đăng nhập.
+     */
     React.useEffect(() => {
         if (params?.data) {
             // console.log('params ----> ', params);
