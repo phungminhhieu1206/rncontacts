@@ -64,7 +64,7 @@ const CreateContact = () => {
     const onFileSelected = (image) => {
         closeSheet();
         setLocalFile(image);
-        // console.log('images -->', image);
+        console.log('images onFileSelected-->', image);
     };
 
     const onSubmit = () => {
